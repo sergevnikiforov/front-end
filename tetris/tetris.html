@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+
+    <style>
+        body {
+            background-color: #ea4c89;
+        }
+        
+        #main {
+            position: relative;
+            width: 1000px;
+            height: 604px;
+            margin: 0 auto;
+            background: #3b5999;
+            -webkit-box-shadow: -4px 8px 23px -6px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: -4px 8px 23px -6px rgba(0, 0, 0, 0.75);
+            box-shadow: -4px 8px 23px -6px rgba(0, 0, 0, 0.75);
+        }
+        
+        .block {
+            position: absolute;
+            left: 50%;
+            bottom: 70%;
+            width: 500px;
+            height: 100px;
+            background: #ea4c89;
+            border: 2px solid #0077b5;
+            transition: all 1s ease;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 4px -2px 93px -6px rgba(228, 64, 95, 1);
+            -moz-box-shadow: inset 4px -2px 93px -6px rgba(228, 64, 95, 1);
+            box-shadow: inset 4px -2px 93px -6px rgba(228, 64, 95, 1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+    </div>
+
+    <script>
+        var time = 1000;
+        //var left = Math.round(Math.random() * 20);
+        var left = 0;
+        var bottom1 = -100;
+        var bottom2 = -100;
+
+
+        function CreatBlock(left, bottom) {
+
+            var block = document.createElement("div");
+            var divmain = document.getElementById("main");
+            divmain.appendChild(block);
+
+            block.setAttribute("class", "block");
+            var goleft = "";
+            setTimeout(function() {
+
+                goleft += "left:" + left + "px;";
+                block.setAttribute("style", goleft);
+
+            }, 500);
+            setTimeout(function() {
+
+                goleft += "bottom:" + bottom + "px;";
+                block.setAttribute("style", goleft);
+
+            }, 1000);
+
+        }
+
+        for (var i = 1; i <= 6; i++) {
+            setTimeout(function() {
+
+                CreatBlock(left, bottom1 += 100);
+
+            }, time += 1000);
+            setTimeout(function() {
+
+                CreatBlock(left + 500, bottom2 += 100);
+
+            }, time += 1000);
+        }
+
+        // setTimeout(function() {
+
+        //     CreatBlock(300, 0);
+
+        // }, 1000);
+        // setTimeout(function() {
+
+        //     CreatBlock(300, 100);
+
+        // }, 2000);
+        // setTimeout(function() {
+
+        //     CreatBlock(300, 200);
+
+        // }, 3000);
+    </script>
+</body>
+
+</html>
